@@ -42,7 +42,7 @@ const App: React.FC = () => {
         
         <footer className="text-center py-10 border-t border-cyber-yellow/20">
           <p className="text-cyber-yellow/50 text-sm font-mono tracking-widest">
-            // END OF LINE // DESIGNED BY A LEGEND // 2025
+            // END OF LINE // DESIGNED BY A LEGEND // 2026
           </p>
         </footer>
       </div>
