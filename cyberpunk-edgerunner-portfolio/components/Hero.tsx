@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { GlitchText } from './GlitchText';
 
 export const Hero: React.FC = () => {
-  const name = "[CHOY BUCH]"; // Placeholder as requested, but user provided projects with "choybuch", so inferring name.
+  const name = "[Elijah D. Bustamante]"; 
 
   return (
     <section className="min-h-[80vh] flex flex-col justify-center items-center text-center relative">
