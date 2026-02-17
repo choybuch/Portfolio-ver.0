@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { GlitchText } from './GlitchText';
 
 export const Hero: React.FC = () => {
   const name = "[Elijah D.]"; 
+  const [typedName, setTypedName] = useState('');
+  const timeoutRef = useRef<NodeJS.Timeout>();
+
+  useEffect(() => {
+    let index = 0;
+    const typeNext = () => {
+      if (index < name.length) {
+        setTypedName(name.substring(0, index + 1));
+        index++;
+        timeoutRef.current = setTimeout(typeNext, 100); // typing speed
+      } else {
+        // finished typing, wait 5 seconds then restart
+        timeoutRef.current = setTimeout(() => {
+          index = 0;
+          setTypedName('');
+          timeoutRef.current = setTimeout(typeNext, 100);
+        }, 5000);
+      }
+    };
+
+    // start typing
+    timeoutRef.current = setTimeout(typeNext, 100);
+
+    // cleanup
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [name]); // name is constant, but for completeness
 
   return (
     <section className="min-h-[80vh] flex flex-col justify-center items-center text-center relative">
@@ -21,14 +51,14 @@ export const Hero: React.FC = () => {
         >
           {/* Sandevistan Trail Effect */}
           <div className="absolute inset-0 blur-sm opacity-50 animate-pulse text-cyber-cyan select-none pointer-events-none transform translate-x-2 translate-y-2">
-            <h1 className="text-6xl md:text-9xl font-display font-black tracking-tighter uppercase">{name}</h1>
+            <h1 className="text-6xl md:text-9xl font-display font-black tracking-tighter uppercase">{typedName}</h1>
           </div>
           <div className="absolute inset-0 blur-sm opacity-50 animate-pulse text-cyber-pink select-none pointer-events-none transform -translate-x-2 -translate-y-2 delay-75">
-            <h1 className="text-6xl md:text-9xl font-display font-black tracking-tighter uppercase">{name}</h1>
+            <h1 className="text-6xl md:text-9xl font-display font-black tracking-tighter uppercase">{typedName}</h1>
           </div>
 
           <GlitchText 
-            text={name} 
+            text={typedName} 
             as="h1" 
             className="text-6xl md:text-9xl font-display font-black tracking-tighter uppercase text-cyber-yellow drop-shadow-[0_0_15px_rgba(252,238,10,0.5)]" 
           />
