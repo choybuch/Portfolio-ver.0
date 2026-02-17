@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edgerunner Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cyber: {
+                yellow: '#FCEE0A',
+                black: '#050505',
+                cyan: '#00F0FF',
+                pink: '#FF003C',
+                gray: '#1A1A1A',
+              }
+            },
+            fontFamily: {
+              display: ['"Archivo Black"', 'sans-serif'],
+              mono: ['"Rajdhani"', 'monospace'],
+            },
+            backgroundImage: {
+              'grid-pattern': "linear-gradient(to right, #1f1f1f 1px, transparent 1px), linear-gradient(to bottom, #1f1f1f 1px, transparent 1px)",
+            }
+          },
+        },
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        background-color: #050505;
+        color: #FCEE0A;
+        font-family: 'Rajdhani', monospace;
+        overflow-x: hidden;
+      }
+      
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #FCEE0A; 
+        border: 1px solid #00F0FF;
+      }
+
+      /* Scanline Effect */
+      .scanlines {
+        background: linear-gradient(
+          to bottom,
+          rgba(255,255,255,0),
+          rgba(255,255,255,0) 50%,
+          rgba(0,0,0,0.2) 50%,
+          rgba(0,0,0,0.2)
+        );
+        background-size: 100% 4px;
+        position: fixed;
+        pointer-events: none;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 50;
+        opacity: 0.6;
+      }
+
+      /* Glitch Keyframes */
+      @keyframes glitch {
+        0% { transform: translate(0) }
+        20% { transform: translate(-2px, 2px) }
+        40% { transform: translate(-2px, -2px) }
+        60% { transform: translate(2px, 2px) }
+        80% { transform: translate(2px, -2px) }
+        100% { transform: translate(0) }
+      }
+
+      .glitch-active {
+        animation: glitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
+        color: #FCEE0A;
+        text-shadow: 2px 0 #FF003C, -2px 0 #00F0FF;
+      }
+
+      /* Clip Path for Angled Corners */
+      .clip-corner {
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          100% calc(100% - 20px),
+          calc(100% - 20px) 100%,
+          0 100%
+        );
+      }
+      
+      .clip-corner-tr {
+        clip-path: polygon(
+          0 0,
+          calc(100% - 20px) 0,
+          100% 20px,
+          100% 100%,
+          0 100%
+        );
+      }
+
+      .clip-hud {
+        clip-path: polygon(
+          0 10px,
+          10px 0,
+          calc(100% - 10px) 0,
+          100% 10px,
+          100% calc(100% - 10px),
+          calc(100% - 10px) 100%,
+          10px 100%,
+          0 calc(100% - 10px)
+        );
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.574.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "framer-motion": "https://esm.sh/framer-motion@^12.34.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
