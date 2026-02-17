@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { GlitchText } from './GlitchText';
 
 export const Hero: React.FC = () => {
-  const name = "[Elijah D. Bustamante]"; 
+  const name = "[Elijah D.]"; 
 
   return (
     <section className="min-h-[80vh] flex flex-col justify-center items-center text-center relative">
