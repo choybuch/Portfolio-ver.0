@@ -23,7 +23,7 @@ const projects: Project[] = [
     type: "Service Platform",
     description: "MERN stack professional services booking platform.",
     tech: ["MongoDB", "Express", "React", "Node"],
-    link: "https://github.com/choybuch/localhire"
+    link: "https://github.com/choybuch/localhire-final-"
   }
 ];
 
